@@ -43,17 +43,14 @@ public class MessageFormatter {
     }
 
     private void appendModeInfo(StringBuilder sb, BaseMapInfo current, BaseMapInfo next) {
-        if (current != null) {
-            sb.append("📍 <b>Сейчас:</b> ").append(current.mapName()).append("\n");
-            if (current.remainingTime() != null) {
-                sb.append("⏳ <b>Осталось:</b> ").append(current.remainingTime()).append("\n");
-            }
-            if (current.dateEnd() != null) {
-                sb.append("🏁 <b>Смена в:</b> ").append(current.dateEnd().format(TIME_FMT)).append(" (МСК)\n");
-            }
+
+        sb.append("📍 <b>Сейчас:</b> ").append(current.mapName()).append("\n");
+        if (current.remainingTime() != null) {
+            sb.append("⏳ <b>Осталось:</b> ").append(current.remainingTime()).append("\n");
         }
-        if (next != null) {
-            sb.append("➡️ <b>Следующая:</b> ").append(next.mapName()).append("\n");
+        if (current.dateEnd() != null) {
+            sb.append("🏁 <b>Смена в:</b> ").append(current.withMoscowTime().dateEnd().format(TIME_FMT)).append(" (МСК)\n");
         }
+        sb.append("➡️ <b>Следующая:</b> ").append(next.mapName()).append("\n");
     }
 }
