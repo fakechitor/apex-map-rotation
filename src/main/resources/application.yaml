@@ -1,14 +1,21 @@
 spring:
   application:
     name: apex-map-rotation
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5467/apex_db}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:password}
+    driver-class-name: org.postgresql.Driver
+server:
+  port: ${SPRING_APP_PORT}
 
 apex:
   api:
-    key: ${ALS_API_TOKEN:}
+    key: ${ALS_API_TOKEN}
     base-url: "https://api.apexlegendsstatus.com"
     timeout-seconds: 10
 
 telegram:
   bot:
-    token: ${TELEGRAM_BOT_TOKEN:}
-    username: "fakechitor_apex_bot"
+    token: ${TELEGRAM_BOT_TOKEN}
+    username: ${TELEGRAM_USERNAME}
