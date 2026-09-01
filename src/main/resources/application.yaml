@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: apex-map-rotation
+
+apex:
+  api:
+    key: ${ALS_API_TOKEN:}
+    base-url: "https://api.apexlegendsstatus.com"
+    timeout-seconds: 10
+
+telegram:
+  bot:
+    token: ${TELEGRAM_BOT_TOKEN:}
+    username: "fakechitor_apex_bot"
