@@ -3,3 +3,5 @@ databaseChangeLog:
       file: db/changelog/changesets/001-create_users_table.sql
   - include:
       file: db/changelog/changesets/002-create_map_table.sql
+  - include:
+      file: db/changelog/changesets/003-add-maps_data.sql
