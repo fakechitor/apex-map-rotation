@@ -1,4 +1,4 @@
-Этап 1: Сборка приложения (Builder)
+# Этап 1: Сборка приложения (Builder)
 FROM eclipse-temurin:21-jdk-alpine AS builder
 WORKDIR /app
 
