@@ -53,4 +53,12 @@ public class MessageFormatter {
         }
         sb.append("➡️ <b>Следующая:</b> ").append(next.mapName()).append("\n");
     }
+
+    public String formatRankedRotationMessage(MapRotationResponse response) {
+        if (response == null) {
+
+        }
+        return "";
+    }
+
 }

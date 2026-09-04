@@ -34,9 +34,13 @@ public class ApexService {
         );
     }
 
-    public String getFormattedRankedInfo() {
+    public String getFormattedTelegramAllInfo() {
         MapRotationResponse response = apexDataClient.parseMapData();
         return messageFormatter.formatRotationMessage(response);
+    }
+    public String getFormattedTelegramRankedInfo() {
+        MapRotationResponse response = apexDataClient.parseMapData();
+        return messageFormatter.formatRankedRotationMessage(response);
     }
 
 }
