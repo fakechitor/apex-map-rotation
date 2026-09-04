@@ -26,6 +26,8 @@ public class TelegramBot extends TelegramLongPollingBot {
 
 
     private static final Logger log = LoggerFactory.getLogger(TelegramBot.class);
+    public static final String MAP_ROTATION = "Ротация карт";
+    public static final String FAVOURITE_MAPS = "Избранные карты";
 
 
     private final String botUsername;
@@ -62,6 +64,8 @@ public class TelegramBot extends TelegramLongPollingBot {
             if ("/start".equalsIgnoreCase(messageText)) {
                 registerUserIfNotFound(telegramUser);
                 sendMainMenu(chatId);
+            } else if (MAP_ROTATION.equalsIgnoreCase(messageText)) {
+                sendMessage(chatId, apexService.getFormattedTelegramRankedInfo());
             } else if ("/ranked".equalsIgnoreCase(messageText)) {
                 sendMessage(chatId, apexService.getRankedInfo().toString());
             } else if ("/maps".equalsIgnoreCase(messageText)) {
@@ -100,8 +104,8 @@ public class TelegramBot extends TelegramLongPollingBot {
         List<KeyboardRow> keyboard = new ArrayList<>();
 
         KeyboardRow row1 = new KeyboardRow();
-        row1.add("Ротация карт");
-        row1.add("Избранные карты");
+        row1.add(MAP_ROTATION);
+        row1.add(FAVOURITE_MAPS);
 
         keyboard.add(row1);
 

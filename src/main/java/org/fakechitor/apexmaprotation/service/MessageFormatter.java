@@ -56,9 +56,23 @@ public class MessageFormatter {
 
     public String formatRankedRotationMessage(MapRotationResponse response) {
         if (response == null) {
-
+            return "⚠️ Не удалось получить данные о ротации карт.";
         }
-        return "";
+        BaseMapInfo currentMap = response.ranked().current().withMoscowTime();
+        BaseMapInfo nextMap = response.ranked().next().withMoscowTime();
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("🎮 <b>Ротация рейтинговых карт</b>\n\n");
+
+        sb.append("📍 <b>Сейчас:</b> ").append(currentMap.mapName()).append("\n");
+        sb.append("⏳ <b>Осталось:</b> ").append(currentMap.remainingTime()).append("\n");
+        sb.append("🎯 <b>Начало:</b> ").append(currentMap.dateStart().format(TIME_FMT)).append(" (МСК)\n");
+        sb.append("🏁 <b>Смена в:</b> ").append(currentMap.dateEnd().format(TIME_FMT)).append(" (МСК)\n\n");
+
+        sb.append("📍 <b>Следующая:</b> ").append(nextMap.mapName()).append("\n");
+        sb.append("🎯 <b>Начало:</b> ").append(nextMap.dateStart().format(TIME_FMT)).append(" (МСК)\n");
+        sb.append("🏁 <b>Смена в:</b> ").append(nextMap.dateEnd().format(TIME_FMT)).append(" (МСК)\n\n");
+        return sb.toString();
     }
 
 }
