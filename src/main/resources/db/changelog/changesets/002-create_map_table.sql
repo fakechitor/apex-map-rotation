@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS map(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    code VARCHAR(255) UNIQUE,
+    icon_link VARCHAR(255)
+);
